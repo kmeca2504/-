@@ -21,6 +21,6 @@ public class TestQueryApi {
 
     @GetMapping("/test/query/querydsl")
     public List<TestEntity>queryQuerydsl(){
-        return testService.findALL
+        return testService.findAllByNameByQuerydsl("wow");
     }
 }
