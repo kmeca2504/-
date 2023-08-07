@@ -126,9 +126,7 @@ DELETE /review/{reviewID}
 
 ```
 
-*맛집에 등록된 리뷰 가져오기 API
-
-* 맛집 삭제 API
+* 맛집에 등록된 리뷰 가져오기 API
 
 ```javaScript
 
