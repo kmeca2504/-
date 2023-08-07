@@ -42,5 +42,110 @@ GET /restaurants
 
 ```
 
+* 맛집 정보 가져오기 API
 
-  
+```javaScript
+
+GET /restaurant/{restaurantId}
+
+// response
+{
+  "id": Long,
+  "name": string,
+  "address": string,
+  "createdAt": string,
+  "updatedAt": string,
+  "menus": [
+    {"id": Long, "name": string, "price": int, "createdAt": string, "updatedAt": string},
+    {"id": Long, "name": string, "price": int, "createdAt": string, "updatedAt": string},
+    ...
+  ]
+}
+
+```
+
+* 맛집 생성 API
+
+```javaScript
+
+POST /restaurant
+{
+  "name": string,
+  "address": string,
+  "menus": [
+    {"name": string, "price": int},
+    ...
+  ]
+}
+
+```
+
+* 맛집 수정 API
+
+```javaScript
+
+PUT /restaurant/{restaurantId}
+{
+  "name": string,
+  "address": string,
+  "menus": [
+    {"name": string, "price": int},
+    ...
+  ]
+}
+
+
+```
+
+* 맛집 삭제 API
+
+```javaScript
+
+DELETE /restaurant/{restaurantId}
+
+```
+
+* 리뷰 작성 API
+
+```javaScript
+
+POST /review
+{
+  "restaurantId": int,
+  "content": string,
+  "score": float
+}
+
+```
+
+* 리뷰 삭제 API
+
+```javaScript
+
+DELETE /review/{reviewID}
+
+```
+
+*맛집에 등록된 리뷰 가져오기 API
+
+* 맛집 삭제 API
+
+```javaScript
+
+GET /restaurant/{restaurantId}/reviews
+
+// response
+{
+  "avgScore": float, // 평균 별점
+  "reviews": [
+    {"id": int, "content": string, "score": float, "createdAt": string},
+    {"id": int, "content": string, "score": float, "createdAt": string},
+    {"id": int, "content": string, "score": float, "createdAt": string}
+  ],
+  "page": {
+    "offset": int,
+    "limit": int
+  }
+}
+
+```
