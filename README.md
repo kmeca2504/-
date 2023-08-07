@@ -41,6 +41,7 @@ GET /restaurants
 }
 
 ```
+---
 
 * 맛집 정보 가져오기 API
 
@@ -63,7 +64,7 @@ GET /restaurant/{restaurantId}
 }
 
 ```
-
+---
 * 맛집 생성 API
 
 ```javaScript
@@ -79,7 +80,7 @@ POST /restaurant
 }
 
 ```
-
+----
 * 맛집 수정 API
 
 ```javaScript
@@ -94,9 +95,8 @@ PUT /restaurant/{restaurantId}
   ]
 }
 
-
 ```
-
+----
 * 맛집 삭제 API
 
 ```javaScript
@@ -104,7 +104,7 @@ PUT /restaurant/{restaurantId}
 DELETE /restaurant/{restaurantId}
 
 ```
-
+----
 * 리뷰 작성 API
 
 ```javaScript
@@ -117,7 +117,7 @@ POST /review
 }
 
 ```
-
+----
 * 리뷰 삭제 API
 
 ```javaScript
@@ -125,7 +125,7 @@ POST /review
 DELETE /review/{reviewID}
 
 ```
-
+-----
 * 맛집에 등록된 리뷰 가져오기 API
 
 ```javaScript
