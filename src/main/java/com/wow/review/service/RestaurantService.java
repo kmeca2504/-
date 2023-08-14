@@ -1,6 +1,8 @@
 package com.wow.review.service;
 
 import com.wow.review.api.request.CreateAndEditRestaurantRequest;
+import com.wow.review.api.response.RestaurantDetailView;
+import com.wow.review.api.response.RestaurantView;
 import com.wow.review.model.MenuEntity;
 import com.wow.review.model.RestaurantEntity;
 import com.wow.review.repository.MenuRepository;
@@ -78,6 +80,44 @@ public class RestaurantService
         menuRepository.deleteAll(menus);
 
     }
+
+
+    public List<RestaurantView> getAllRestaurants(){
+        List<RestaurantEntity> restaurants = restaurantRepository.findAll();
+
+        return restaurants.stream().map((restaurant) -> RestaurantView.builder()
+                .id(restaurant.getId())
+                .name(restaurant.getName())
+                .address(restaurant.getAddress())
+                .createdAt(restaurant.getCreatedAt())
+                .updatedAt(restaurant.getUpdatedAt())
+                .build()
+        ).toList();
+    }
+
+    public RestaurantDetailView getRestaurantDetail(Long restaurantId){
+        RestaurantEntity restaurant = restaurantRepository.findById(restaurantId).orElseThrow();
+        List<MenuEntity> menus = menuRepository.findAllByRestaurantId(restaurantId);
+
+        return RestaurantDetailView.builder()
+                .id(restaurant.getId())
+                .name(restaurant.getName())
+                .address(restaurant.getAddress())
+                .updateAt(restaurant.getUpdatedAt())
+                .createdAt(restaurant.getCreatedAt())
+                .menus(
+                    menus.stream().map((menu)->RestaurantDetailView.Menu.builder()
+                            .id(menu.getId())
+                            .name(menu.getName())
+                            .price(menu.getPrice())
+                            .createdAt(menu.getCreateAt())
+                            .updatedAt(menu.getUpdateAt())
+                            .build()
+                    ).toList()
+                )
+                .build();
+    }
+
 
 
 }
